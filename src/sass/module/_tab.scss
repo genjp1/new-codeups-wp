@@ -1,0 +1,166 @@
+@use "global" as *;
+
+.tab {
+    width: 100%;
+  }
+  
+  .tab__list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: rem(20);
+    row-gap: rem(16);
+    justify-items: center;
+
+    @include mq("md") {
+      column-gap: rem(90);
+    }
+  }
+  
+  .tab__button {
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    height: inherit;
+    width: 100%;
+    max-width: rem(300);
+    padding: rem(10) rem(15) rem(10) rem(15);
+    cursor: pointer;
+    text-align: right;
+    flex-shrink: 0;
+    border: none;
+    text-align: center;
+
+    color: $green1;
+    font-size: rem(14);
+    font-style: normal;
+    font-weight: $regular;
+    line-height: 1.57143; /* 157.143% */
+    background-color: $green2;
+    transition: all .5s;
+    position: relative;
+    box-shadow: rem(2) rem(2) rem(4) rem(0) rgba(0, 0, 0, 0.25);
+
+    @include mq("md") {
+      display: inherit;
+      justify-content: inherit;
+      align-items: inherit;
+      height: inherit;
+      width: 100%;
+      font-size: rem(24);
+      padding: rem(29) rem(30) rem(26) rem(35);
+      text-align: right;
+      box-shadow: none;
+    }
+
+  }
+
+  .tab__button.tab__button--fun {
+
+      @include mq("md") {
+        padding: rem(29) rem(18) rem(26) rem(35);
+      }
+  }
+
+  .tab__button:hover {
+    background-color: $green1;
+    color: $white;
+  }
+
+  .tab__button.is-active {
+    color: #fff;
+    background-color: $green1;
+  }
+  
+
+/* mask-imageで画像を設定（ホバー時色分けできるようにする）
+=====================================================*/
+// 共通のスタイル設定
+  .tab__button::before {
+  @include mq("md") {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - (min(46.062vw, rem(121))));
+    transform: translateY(-50%);
+    width: rem(64);
+    height: rem(64);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: $green1; // 初期の背景色（緑）
+    z-index: 2;
+    transition: all .5s;
+  }
+}
+
+// ライセンス講習のスタイル
+.tab__button.tab__button--license::before {
+  @include mq("md") {
+    mask-image: url(../images/common/icon-information1-green.svg);
+  }
+}
+
+// ライセンス講習のホバー時とアクティブ時の背景色（白）
+.tab__button.tab__button--license:hover::before,
+.tab__button.tab__button--license.is-active::before {
+  @include mq("md") {
+    background-color: $white; 
+  }
+}
+
+// ファンダイビングのスタイル調整
+.tab__button.tab__button--fun::before {
+  @include mq("md") {
+    mask-image: url(../images/common/icon-information2.svg);
+    left: calc(50% - (min(46.062vw, rem(132))));
+
+  }
+}
+
+// ファンダイビングのホバー時とアクティブ時の背景色（白）
+.tab__button.tab__button--fun:hover::before,
+.tab__button.tab__button--fun.is-active::before {
+  @include mq("md") {
+    background-color: $white;
+    left: calc(50% - (min(46.062vw, rem(132))));
+  }
+}
+
+// 体験ダイビングのスタイル
+.tab__button.tab__button--experience::before {
+  @include mq("md") {
+    mask-image: url(../images/common/icon-information3.svg);
+  }
+}
+
+// 体験ダイビングのホバー時とアクティブ時の背景色（白）
+.tab__button.tab__button--experience:hover::before,
+.tab__button.tab__button--experience.is-active::before {
+  @include mq("md") {
+    background-color: $white;
+  }
+}
+/* mask-imageで画像を設定（ここまで）
+=====================================================*/
+
+
+
+  .tab__contents {
+    margin-top: rem(14);
+
+    @include mq("md") {
+      margin-top: rem(20);
+    }
+  }
+  
+  .tab__content {
+    display: none;
+  }
+  
+  .tab__content.is-active {
+    display: block;
+  }
+  
+  .tab__cards {
+
+  }
