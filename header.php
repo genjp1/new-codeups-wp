@@ -35,7 +35,7 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
     <div class="header__inner">
       <h1 class="header__logo">
         <a href="index.html" class="logo">
-          <img src="./assets/images/common/logo.svg" alt="CodeUps">
+          <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/logo.svg" alt="CodeUps">
         </a>
       </h1>
       <button class="header__drawer hamburger js-hamburger">

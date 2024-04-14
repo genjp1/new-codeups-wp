@@ -32,7 +32,7 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
       <div class="contact__content">
         <div class="contact__left">
           <div class="contact__imgTop">
-            <img src="./assets/images/common/contact-logo.svg" alt="CodeUps">
+            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/contact-logo.svg" alt="CodeUps">
           </div>
           <hr class="contact__line">
           <address class="contact__address-content">
@@ -70,15 +70,15 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
       <div class="footer__icon">
         <div class="footer__logo">
           <a href="index.html" class="logo logo--footer">
-            <img src="./assets/images/common/footer-logo.svg" alt="CodeUps">
+            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/footer-logo.svg" alt="CodeUps">
           </a>
         </div>
         <div class="footer__sns footer-sns">
           <ul class="footer-sns__items">
             <li class="footer-sns__item"><a href="https://www.facebook.com/" target="_blank"><img
-                  src="./assets/images/common/footer-facebook.svg" alt="facebook"></a></li>
+                  img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/footer-facebook.svg" alt="facebook"></a></li>
             <li class="footer-sns__item"><a href="https://www.instagram.com/" target="_blank"><img
-                  src="./assets/images/common/footer-instagram.svg" alt="instagram"></a></li>
+                  img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/footer-instagram.svg" alt="instagram"></a></li>
           </ul>
         </div>
       </div>
