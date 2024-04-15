@@ -58,7 +58,7 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
             <p class="title__subText">ご予約・お問い合わせはコチラ</p>
           </div>
           <div class="contact__btn">
-            <a href="page-contact.html" class="btn"><span>Contact us</span></a>
+            <a href="<?php echo $contact; ?>" class="btn"><span>Contact us</span></a>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
     <div class="footer__inner inner">
       <div class="footer__icon">
         <div class="footer__logo">
-          <a href="index.html" class="logo logo--footer">
+          <a href="<?php echo $home; ?>" class="logo logo--footer">
             <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/footer-logo.svg" alt="CodeUps">
           </a>
         </div>
