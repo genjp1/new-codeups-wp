@@ -308,7 +308,9 @@ function wpcf7_autop_return_false() {
 } 
 
 
-
+/*====================================================
+# ブログ人気ランキング
+=====================================================*/
 
 //記事のアクセス数を表示
 function getPostViews($postID){
@@ -336,6 +338,9 @@ function setPostViews($postID) {
     }
 }
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+/* ここまで、ブログ人気ランキング
+=====================================================*/
 
 
 
