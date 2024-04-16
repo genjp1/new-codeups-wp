@@ -33,8 +33,14 @@
     align-items: center;
     margin-top: rem(22);
 
+    //Contactform7用に追加
+    align-items: flex-start;
+
     @include mq("md") {
-        margin-top: rem(34);
+        margin-top: 34px;
+        
+        //Contactform7用に追加
+        display: flex;
     }
 }
 
@@ -113,6 +119,9 @@
 .form__privacy {
     margin-top: rem(40);
     text-align: center;
+
+    //Contactform7用に追加
+    margin-left: -16px;
   
     @include mq("md") {
       margin-top: rem(76);
@@ -145,6 +154,8 @@
     text-align: center;
 
     @include mq("md") {
-        margin-top: rem(40);
+
+        //Contactform7用に追加
+        margin-top: 40px;//40px rem(40)
     }
 }

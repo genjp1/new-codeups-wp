@@ -264,6 +264,16 @@ jQuery(function ($) {
     // .btn__submitの色を元に戻す
     $(this).find('.btn__submit').css('color', ''); // ここでは元の色に戻していますが、具体的な色に設定しても良い
   });
+
+  //Contactform7用に追加
+  /*====================================================
+  # Contact Form 7のボタンホバーエフェクト 
+  =====================================================*/
+  $('.btn').hover(function () {
+    $('.form-submit input[type=submit]').addClass('btn-hovered');
+  }, function () {
+    $('.form-submit input[type=submit]').removeClass('btn-hovered');
+  });
 });
 
 /*====================================================

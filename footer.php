@@ -19,14 +19,17 @@ $p_fundiving = esc_url( home_url( '/price#fundiving' ) );
 $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
 ?> 
 
-<?php if(!is_404()): ?>
+
+ <?php if (!is_404()): ?>
  <div class="pagetop-block">
     <!--   トップに戻るボタン -->
     <a class="pagetop" href="#">
       <div class="pagetop__arrow"></div>
     </a>
   </div>
- 
+  <?php endif; ?>
+
+  <?php if (!is_404() && !is_page('contact') && !is_page('contact-thanks')): ?>
  <!-- contact -->
   <section id="contact" class="contact top-contact">
     <div class="contact__inner inner">
