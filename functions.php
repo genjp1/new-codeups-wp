@@ -291,7 +291,7 @@ function add_origin_thanks_page() {
     echo <<< EOC
         <script>
         var thanksPage = {
-            229: '{$contact}',
+            37: '{$contact}',
         };
         document.addEventListener( 'wpcf7mailsent', function( event ) {
             location = thanksPage[event.detail.contactFormId];
