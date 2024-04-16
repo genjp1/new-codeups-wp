@@ -30,7 +30,7 @@
                 <?php while (have_posts()) : the_post(); ?>
 
             <a href="<?php the_permalink(); ?>" class="blog-cards__card card">
-            <?php if (has_post_thumbnail()): ?>
+                <?php if (has_post_thumbnail()): ?>
                     <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
                     <div class="card__img">
                     <?php the_post_thumbnail(); ?>
