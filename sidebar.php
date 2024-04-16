@@ -65,25 +65,60 @@ $contact = esc_url( home_url( '/contact/' ) );
     </div>
 
     <div class="sidebar__review">
-    <h2 class="sidebar__title">口コミ</h2>
-    <ul class="sidebar__cards review-cards">
-        <li class="review-cards__card review-card">
-        <div class="review-card__content">
-            <div class="review-card__img colorbox">
-            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/blog7.jpg" alt="カップルが笑顔で寄り添ってソファに座っている様子"
-                class="review-card__img-img">
-            </div>
-            <div class="review-card__info">
-            <p class="review-card__age">30代(カップル)</p>
-            <p class="review-card__title">ここにタイトルが入ります。ここにタイトル</p>
-            </div>
+        <h2 class="sidebar__title">口コミ</h2>
+
+        <?php
+        $args = array(
+            "post_type" => "voice",
+            "posts_per_page" => 1,
+            "orderby" => "date",
+            "order" => "DESC",
+        );
+        $the_query = new WP_Query($args);
+        ?>
+
+        <?php if ($the_query->have_posts()) : ?>
+        <ul class="sidebar__cards review-cards">
+        <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+            <li class="review-cards__card review-card">
+              <a href="<?php the_permalink(); ?>" class="review-card__content">
+                <div class="review-card__img colorbox">
+                    <?php if (has_post_thumbnail()): ?>
+                        <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
+                        <?php the_post_thumbnail(); ?>
+                    <?php else: ?>
+                        <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="review-card__img-img">
+                    <?php endif; ?>
+                </div>
+                <div class="review-card__info">
+                    <p class="review-card__age">
+                        <?php
+                        $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
+                        if ( ! empty( $taxonomy_terms ) ) {
+                            foreach( $taxonomy_terms as $taxonomy_term ) {
+                                echo '<span class="news__category">' . esc_html( $taxonomy_term->name ) . '</span>';
+                            }
+                        }
+                        ?>
+                    </p>
+                <p class="review-card__title"><?php the_title(); ?></p>
+                </div>
+              </a>
+            </li>
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+        </ul>
+        <?php else : ?>
+            <p>記事が投稿されていません</p>
+        <?php endif; ?>
+        
+        <div class="sidebar__review-cardBtn">
+        <a href="<?php echo $voice; ?>" class="btn"><span>View more</span></a>
         </div>
-        </li>
-    </ul>
-    <div class="sidebar__review-cardBtn">
-        <a href="page-voice.html" class="btn"><span>View more</span></a>
     </div>
-    </div>
+
+    
     <div class="sidebar__campaign">
     <h2 class="sidebar__title">キャンペーン</h2>
     <ul class="sidebar__cards sidebar-campaignCards">
