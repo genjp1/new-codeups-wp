@@ -118,57 +118,84 @@ $contact = esc_url( home_url( '/contact/' ) );
         </div>
     </div>
 
-    
+
     <div class="sidebar__campaign">
     <h2 class="sidebar__title">キャンペーン</h2>
+
+        <!--例：タイトルの下に配置する -->
+        <?php
+        $args = array(
+            "post_type" => "campaign",
+            "posts_per_page" => 2,
+            "orderby" => "date",
+            "order" => "DESC",
+        );
+        $the_query = new WP_Query($args);
+        ?>
+
+        <?php if ($the_query->have_posts()) : ?>
+
     <ul class="sidebar__cards sidebar-campaignCards">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <li class="sidebar-campaignCards__card">
-        <div class="sidebar-campaignCard">
+        <a href="<?php the_permalink(); ?>" class="sidebar-campaignCard">
             <div class="sidebar-campaignCard__item">
             <div class="sidebar-campaignCard__img">
-                <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/campaign1.jpg" alt="水中に複数の魚がいる様子">
+
+                <?php if (has_post_thumbnail()): ?>
+                    <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
+                    <?php the_post_thumbnail(); ?>
+                <?php else: ?>
+                    <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="review-card__img-img">
+                <?php endif; ?>
+
             </div>
             <div class="sidebar-campaignCard__body">
                 <div class="sidebar-campaignCard__head">
-                <p class="sidebar-campaignCard__title">ライセンス取得</p>
+
+                <!-- タイトル取得 -->
+                <p class="sidebar-campaignCard__title"><?php the_title(); ?></p>
                 </div>
+
+                <!-- ACF変数化 -->
+                <?php 
+                $campaignPrice = get_field('campaign_price');
+                $campaignDetail= get_field('campaign_detail');
+                $campaignPeriod = $campaignDetail['campaign-period'];
+                ?>
+
                 <div class="sidebar-campaignCard__text-blok">
                 <hr class="sidebar-campaignCard__line">
-                <p class="sidebar-campaignCard__text">全部コミコミ(お一人様)</p>
+
+                <?php if( !empty($campaignPrice['text']) ): ?>
+                <p class="sidebar-campaignCard__text"><?php echo esc_html($campaignPrice['text']); ?></p>
+                <?php endif; ?>
+
                 <div class="sidebar-campaignCard__price">
-                    <p class="sidebar-campaignCard__price-before">¥56,000</p>
-                    <p class="sidebar-campaignCard__price-discount">¥46,000</p>
+                    <?php if( !empty($campaignPrice['list-price']) ): ?>
+                    <p class="sidebar-campaignCard__price-before">&yen;<?php echo number_format($campaignPrice['list-price']); ?></p>
+                    <?php endif; ?>
+
+                    <?php if( !empty($campaignPrice['discount-price']) ): ?>
+                    <p class="sidebar-campaignCard__price-discount">&yen;<?php echo number_format($campaignPrice['discount-price']); ?></p>
+                    <?php endif; ?>
                 </div>
                 </div>
             </div>
             </div>
-        </div>
+        </a>
         </li>
-        <li class="sidebar-cards__card">
-        <div class="sidebar-campaignCard">
-            <div class="sidebar-campaignCard__item">
-            <div class="sidebar-campaignCard__img">
-                <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/campaign2.jpg" alt="水面にボートが浮かんでいる様子">
-            </div>
-            <div class="sidebar-campaignCard__body">
-                <div class="sidebar-campaignCard__head">
-                <p class="sidebar-campaignCard__title">貸切体験ダイビング</p>
-                </div>
-                <div class="sidebar-campaignCard__text-blok">
-                <hr class="sidebar-campaignCard__line">
-                <p class="sidebar-campaignCard__text">全部コミコミ(お一人様)</p>
-                <div class="sidebar-campaignCard__price">
-                    <p class="sidebar-campaignCard__price-before">¥24,000</p>
-                    <p class="sidebar-campaignCard__price-discount">¥18,000</p>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </li>
-    </ul>
+        
+        <!-- ループ終了の場所に持っていく -->
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+        </ul>
+        <?php else : ?>
+            <p>記事が投稿されていません</p>
+        <?php endif; ?>
+
     <div class="sidebar__campaign-cardBtn">
-        <a href="page-campaign.html" class="btn"><span>View more</span></a>
+        <a href="<?php echo $campaign; ?>" class="btn"><span>View more</span></a>
     </div>
     </div>
     <div class="sidebar__archive">
