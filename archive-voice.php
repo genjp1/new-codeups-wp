@@ -23,6 +23,16 @@
     <div class="page-voice__inner inner">
 
       <!-- カテゴリータブ -->
+      <!-- <div class="page-voice__tab tab-category">
+        <div class="tab-category__lists">
+          <a href="page-voice.html" class="tab-category__list is-active">ALL</a>
+          <a href="page-voice_category-licence.html" class="tab-category__list">ライセンス講習</a>
+          <a href="page-voice_category-fundiving.html" class="tab-category__list">ファンダイビング</a>
+          <a href="page-voice_category-trial-diving.html" class="tab-category__list">体験ダイビング</a>
+        </div>
+      </div> -->
+
+      <!-- カテゴリータブ -->
       <div class="page-voice__tab tab-category">
         <div class="tab-category__lists">
 
