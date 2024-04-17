@@ -18,6 +18,25 @@
   <!-- パンくず あとでプラグイン化する。-->
   <?php echo get_template_part('/template/breadcrumb')?>
 
+    <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
+    <?php
+    // タクソノミーのスラッグを指定
+    $voice_category_slug = get_query_var('voice_category');
+    $args = array(
+        // カスタム投稿のスラッグを指定
+        "post_type" => "voice",
+        'tax_query' => array(
+            array(
+                // タクソノミーのスラッグを指定
+                'taxonomy' => 'voice_category',
+                'field'    => 'slug',
+                'terms'    => $voice_category_slug,
+            ),
+        ),
+    );
+    $the_query = new WP_Query($args); if($the_query->have_posts()):
+  ?>
+
   <!-- page-voice -->
   <div class="page-voice top-page-voice">
     <div class="page-voice__inner inner">
@@ -73,17 +92,6 @@
 
         </div>
       </div>
-
-        <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
-        <?php
-            $args = array( 
-            //カスタム投稿のスラッグ名を記述
-            'post_type' => 'voice',
-            //表示する記事の件数を指定
-            'posts_per_page' => 6,
-            );
-            $the_query = new WP_Query($args); if($the_query->have_posts()):
-        ?>
 
       <!-- ALL -->
       <ul class="page-voice__cards voice-cards">
