@@ -57,7 +57,7 @@ $contact = esc_url( home_url( '/contact/' ) );
       //カスタム投稿のスラッグ名を記述
       'post_type' => 'campaign',
       //表示する記事の件数を指定
-      'posts_per_page' => 4,
+      'posts_per_page' => -1,
     );
     $the_query = new WP_Query($args); if($the_query->have_posts()):
   ?>
@@ -86,7 +86,14 @@ $contact = esc_url( home_url( '/contact/' ) );
                 <div class="campaign-card">
                   <div class="campaign-card__item">
                     <div class="campaign-card__img">
-                      <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/campaign1.jpg" alt="水中に複数の魚がいる様子">
+
+                    <?php if (has_post_thumbnail()): ?>
+                        <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
+                        <?php the_post_thumbnail(); ?>
+                    <?php else: ?>
+                        <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="">
+                    <?php endif; ?>
+
                     </div>
                     <div class="campaign-card__body">
                       <div class="campaign-card__head">
@@ -127,7 +134,7 @@ $contact = esc_url( home_url( '/contact/' ) );
                           <?php endif; ?>
 
                         </div>
-                        
+
                       </div>
                     </div>
                   </div>
