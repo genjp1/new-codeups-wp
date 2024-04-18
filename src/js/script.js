@@ -286,6 +286,22 @@ $('.btn').hover(
 );
 
 
+
+/*====================================================
+# サイドバーのアーカイブ部分
+=====================================================*/
+  $(function () {
+    $(".js-toggle-item:not(:first-of-type)").css("display", "none");  // 最初の年以外を隠す
+    $(".js-toggle-title").on("click", function () {
+      $(this).next(".js-toggle-item").slideToggle(); // 隣接する .js-toggle-item のみをトグル
+      $(this).toggleClass("open", 300);
+    });
+  });
+  
+
+
+
+
 });
 
 

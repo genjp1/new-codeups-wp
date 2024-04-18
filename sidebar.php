@@ -204,85 +204,88 @@ $contact = esc_url( home_url( '/contact/' ) );
     <div class="sidebar__container toggl">
         <div class="toggl__container">
 
-        <details open="open">
-            <summary><span class="toggl__age">2023</span></summary>
-            <div class="folder">
-            <details>
-                <summary><span class="toggl__month">3月</span></summary>
+            <details open="open">
+                <summary><span class="toggl__age">2023</span></summary>
                 <div class="folder">
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ライセンス取得</p>
-                </a>
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ウミガメと泳ぐ</p>
-                </a>
+                <details>
+                    <summary><span class="toggl__month">3月</span></summary>
+                    <div class="folder">
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ライセンス取得</p>
+                    </a>
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ウミガメと泳ぐ</p>
+                    </a>
+                    </div>
+                </details>
+                <details>
+                    <summary><span class="toggl__month">2月</span></summary>
+                    <div class="folder">
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ライセンス取得</p>
+                    </a>
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ウミガメと泳ぐ</p>
+                    </a>
+                    </div>
+                </details>
+                <details>
+                    <summary><span class="toggl__month">1月</span></summary>
+                    <div class="folder">
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ライセンス取得</p>
+                    </a>
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ウミガメと泳ぐ</p>
+                    </a>
+                    </div>
+                </details>
                 </div>
             </details>
             <details>
-                <summary><span class="toggl__month">2月</span></summary>
+                <summary><span class="toggl__age">2022</span></summary>
                 <div class="folder">
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ライセンス取得</p>
-                </a>
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ウミガメと泳ぐ</p>
-                </a>
+                <details>
+                    <summary><span class="toggl__month">3月</span></summary>
+                    <div class="folder">
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ライセンス取得</p>
+                    </a>
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ウミガメと泳ぐ</p>
+                    </a>
+                    </div>
+                </details>
+                <details>
+                    <summary><span class="toggl__month">2月</span></summary>
+                    <div class="folder">
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ライセンス取得</p>
+                    </a>
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ウミガメと泳ぐ</p>
+                    </a>
+                    </div>
+                </details>
+                <details>
+                    <summary><span class="toggl__month">1月</span></summary>
+                    <div class="folder">
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ライセンス取得</p>
+                    </a>
+                    <a href="page-blogDetail.html">
+                        <p>2023.11/17 ウミガメと泳ぐ</p>
+                    </a>
+                    </div>
+                </details>
                 </div>
             </details>
-            <details>
-                <summary><span class="toggl__month">1月</span></summary>
-                <div class="folder">
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ライセンス取得</p>
-                </a>
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ウミガメと泳ぐ</p>
-                </a>
-                </div>
-            </details>
-            </div>
-        </details>
-        <details>
-            <summary><span class="toggl__age">2022</span></summary>
-            <div class="folder">
-            <details>
-                <summary><span class="toggl__month">3月</span></summary>
-                <div class="folder">
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ライセンス取得</p>
-                </a>
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ウミガメと泳ぐ</p>
-                </a>
-                </div>
-            </details>
-            <details>
-                <summary><span class="toggl__month">2月</span></summary>
-                <div class="folder">
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ライセンス取得</p>
-                </a>
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ウミガメと泳ぐ</p>
-                </a>
-                </div>
-            </details>
-            <details>
-                <summary><span class="toggl__month">1月</span></summary>
-                <div class="folder">
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ライセンス取得</p>
-                </a>
-                <a href="page-blogDetail.html">
-                    <p>2023.11/17 ウミガメと泳ぐ</p>
-                </a>
-                </div>
-            </details>
-            </div>
-        </details>
 
         </div>
 
     </div>
+    <ul>
+    <?php blog_get_archives(); ?>
+    </ul>
     </div>
 </div>

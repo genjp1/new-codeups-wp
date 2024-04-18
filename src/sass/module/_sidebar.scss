@@ -99,3 +99,35 @@
     text-align: center;
     margin-top: rem(40);
   }
+
+
+/*====================================================
+# サイドバーのアーカイブ部分
+=====================================================*/
+  .sidebar__archive {
+    color: #408F95;
+  }
+  
+  .sidebar__archive li {
+    margin-top: 0.25rem;
+  }
+  
+  .sidebar__archive li:before {
+    content: "▶︎";
+    display: inline-block;
+    height: 1rem;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  }
+  
+  .sidebar__archive-item {
+    margin-left: 1rem;
+  }
+  
+  .sidebar__archive-title:before {
+    transform: rotate(-30deg);
+  }
+  
+  .sidebar__archive-title.open:before {
+    transform: rotate(0deg);
+  }
