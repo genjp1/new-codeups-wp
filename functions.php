@@ -27,6 +27,9 @@ add_action( 'after_setup_theme', 'my_setup' );
 
 
 
+/*====================================================
+# CSSとJavaScriptの読み込み
+=====================================================*/
 /**
  * CSSとJavaScriptの読み込み
  *
@@ -133,7 +136,9 @@ add_action('wp_enqueue_scripts', 'my_script_init');
 // add_filter( 'get_the_archive_title', 'my_archive_title' );
 
 
-//管理画面、投稿の名称変更
+/*====================================================
+# 管理画面、投稿の名称変更
+=====================================================*/
 function Change_menulabel() {
 	global $menu;
 	global $submenu;
@@ -161,7 +166,9 @@ add_action( 'init', 'Change_objectlabel' );
 add_action( 'admin_menu', 'Change_menulabel' );
 
 
-
+/*====================================================
+# 抜粋文の文字数の変更
+=====================================================*/
 /**
  * 抜粋文の文字数の変更
  *
@@ -172,7 +179,6 @@ function my_excerpt_length( $length ) {
 	return 89;
 }
 add_filter( 'excerpt_length', 'my_excerpt_length', 999 );
-
 
 /**
  * 抜粋文の省略記法の変更
@@ -187,20 +193,23 @@ function my_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'my_excerpt_more' );
 
 
+// /*====================================================
+// # 表示件数変更（カスタム投稿一覧）
+// =====================================================*/
+// add_action( 'pre_get_posts', 'my_custom_query_vars' );
+// function my_custom_query_vars( $query ) {
+// 	/* @var $query WP_Query */
+// 	if ( !is_admin() && $query->is_main_query()) {
+// 		if ( is_post_type_archive('campaign') ) {
+// 			$query->set( 'posts_per_page' , 3 );//表示したい数（全件表示は「-1」）
+// 		}
+// 	}
+// 	return $query;
+// }
 
-//表示件数変更（カスタム投稿一覧）
-add_action( 'pre_get_posts', 'my_custom_query_vars' );
-function my_custom_query_vars( $query ) {
-	/* @var $query WP_Query */
-	if ( !is_admin() && $query->is_main_query()) {
-		if ( is_post_type_archive('campaign') ) {
-			$query->set( 'posts_per_page' , 3 );//表示したい数（全件表示は「-1」）
-		}
-	}
-	return $query;
-}
-
-// // カスタム投稿タイプのアーカイブページで表示する投稿数を変更（まさたさん）
+// /*====================================================
+// # カスタム投稿タイプのアーカイブページで表示する投稿数を変更（まさたさん）
+// =====================================================*/
 // function custom_posts_per_page($query)
 // {
 //     if (!is_admin() && $query->is_main_query()) {
@@ -213,6 +222,10 @@ function my_custom_query_vars( $query ) {
 // }
 // add_action('pre_get_posts', 'custom_posts_per_page');
 
+
+/*====================================================
+# smart custom field
+=====================================================*/
 /* --------------------------------------------
  /*///smart custom field
  /* -------------------------------------------- */

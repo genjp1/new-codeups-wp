@@ -212,6 +212,17 @@ $contact = esc_url( home_url( '/contact/' ) );
     </div>
   </section>
 
+<!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
+<?php
+  $args = array( 
+    //カスタム投稿のスラッグ名を記述
+    'post_type' => 'post',
+    //表示する記事の件数を指定
+    'posts_per_page' => 3,
+  );
+  $the_query = new WP_Query($args); if($the_query->have_posts()):
+?>
+
   <!-- blog -->
   <section id="blog" class="blog blog-bg top-blog">
     <div class="blog__inner inner">
@@ -220,48 +231,52 @@ $contact = esc_url( home_url( '/contact/' ) );
         <h2 class="title__sub title__sub--white">ブログ</h2>
       </div>
       <div class="blog__cards blog-cards">
+
+      <!-- ループ処理開始の場所に持っていく -->
+      <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+
         <a href="<?php echo $blogDetail; ?>" class="blog-cards__card card">
-          <div class="card__img">
-            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/blog1.jpg" alt="水中のイソギンチャクの様子">
-          </div>
+
+          <?php if (has_post_thumbnail()): ?>
+              <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
+              <div class="card__img">
+                <?php the_post_thumbnail(); ?>
+              </div>
+          <?php else: ?>
+              <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="review-card__img-img">
+          <?php endif; ?>
+
           <div class="card__body">
-            <time class="card__date" datetime="2023-11-17">2023.11/17</time>
-            <h3 class="card__title">ライセンス取得</h3>
+            <time class="card__date" datetime="<?php the_time('c')?>"><?php the_time('Y.m.d')?></time>
+            <h3 class="card__title"><?php the_title();?></h3>
             <hr class="card__line">
-            <p class="card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-              ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
+            <p class="card__text"><?php the_excerpt();?></p>
           </div>
         </a>
-        <a href="<?php echo $blogDetail; ?>" class="blog-cards__card card">
-          <div class="card__img">
-            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/blog2.jpg" alt="水中でウミガメが泳いでいる様子">
+
+        <!-- ループ終了の場所に持っていく -->
+        <?php endwhile; wp_reset_postdata(); ?>
           </div>
-          <div class="card__body">
-            <time class="card__date" datetime="2023-11-17">2023.11/17</time>
-            <h3 class="card__title">ウミガメと泳ぐ</h3>
-            <hr class="card__line">
-            <p class="card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-              ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
-          </div>
-        </a>
-        <a href="<?php echo $blogDetail; ?>" class="blog-cards__card card">
-          <div class="card__img">
-            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/blog3.jpg" alt="水中のカクレクマノミがイソギンチャクの中にいる様子">
-          </div>
-          <div class="card__body">
-            <time class="card__date" datetime="2023-11-17">2023.11/17</time>
-            <h3 class="card__title">カクレクマノミ</h3>
-            <hr class="card__line">
-            <p class="card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-              ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
-          </div>
-        </a>
-      </div>
+        <?php else : ?>
+            <p>記事が投稿されていません</p>
+        <?php endif; ?>
+
       <div class="blog__btn">
         <a href="<?php echo $blog; ?>" class="btn"><span>View more</span></a>
       </div>
     </div>
   </section>
+
+  <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
+  <?php
+    $args = array( 
+      //カスタム投稿のスラッグ名を記述
+      'post_type' => 'voice',
+      //表示する記事の件数を指定
+      'posts_per_page' => 2,
+    );
+    $the_query = new WP_Query($args); if($the_query->have_posts()):
+  ?>
 
   <!-- voice -->
   <section id="voice" class="voice top-voice">
@@ -271,45 +286,53 @@ $contact = esc_url( home_url( '/contact/' ) );
         <h2 class="title__sub">お客様の声</h2>
       </div>
       <ul class="voice__voice-cards voice-cards">
+
+      <!-- ループ処理開始の場所に持っていく -->
+      <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+
         <li class="voice-cards__card voice-card">
           <div class="voice-card__content">
             <div class="voice-card__info">
               <div class="voice-card__meta">
-                <p class="voice-card__age">20代(女性)</p>
-                <p class="voice-card__tag">ライセンス講習</p>
+
+                <!-- ACF条件分岐 -->
+                <?php if (get_field('age')) : ?>
+                  <p class="voice-card__age"><?php the_field('age'); ?></p>
+                <?php endif; ?>
+
+                <!-- タクソノミー取得 -->
+                <?php $terms = get_the_terms( get_the_ID(), 'voice_category' ); ?>
+                <p class="voice-card__tag">
+                <?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+                $term = array_shift( $terms ); // 配列から最初の項目を取り出す
+                echo $term->name;}?>
+                </p>
+
               </div>
-              <h3 class="voice-card__title">ここにタイトルが入ります。ここにタイトル</h3>
+              <h3 class="voice-card__title"><?php the_title();?></h3>
               <hr class="voice-card__line">
             </div>
             <div class="voice-card__img colorbox">
-              <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/voice1.jpg" alt="麦わら帽子を被った女性の様子" class="voice-card__img-img">
+
+                <?php if (has_post_thumbnail()): ?>
+                  <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
+                  <?php the_post_thumbnail(); ?>
+                  <?php else: ?>
+                      <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="review-card__img-img">
+                <?php endif; ?>
+
             </div>
           </div>
-          <p class="voice-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-            ここにテキストが入ります。ここにテキストが入ります。
-          </p>
+          <p class="voice-card__text"><?php the_content();?></p>
         </li>
-        <li class="voice-cards__card voice-card">
-          <div class="voice-card__content">
-            <div class="voice-card__info">
-              <div class="voice-card__meta">
-                <p class="voice-card__age">20代(男性)</p>
-                <p class="voice-card__tag">ファンダイビング</p>
-              </div>
-              <h3 class="voice-card__title">ここにタイトルが入ります。ここにタイトル</h3>
-              <hr class="voice-card__line">
-            </div>
-            <div class="voice-card__img colorbox">
-              <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/voice2.jpg" alt="男性がグッドサインをしている様子" class="voice-card__img-img">
-            </div>
-          </div>
-          <p class="voice-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-            ここにテキストが入ります。ここにテキストが入ります。
-          </p>
-        </li>
-      </ul>
+
+        <!-- ループ終了の場所に持っていく -->
+        <?php endwhile; wp_reset_postdata(); ?>
+        </ul>
+        <?php else : ?>
+            <p>記事が投稿されていません</p>
+        <?php endif; ?>
+
       <div class="voice__btn">
         <a href="<?php echo $voice; ?>" class="btn"><span>View more</span></a>
       </div>
@@ -328,82 +351,101 @@ $contact = esc_url( home_url( '/contact/' ) );
       </div>
       <div class="price__content">
         <div class="price__items">
+
+          <!-- license_lists -->
           <h3 class="price__title">ライセンス講習</h3>
           <hr class="price__line">
-          <dl class="price__item">
-            <div class="price__course">
-              <dt class="price__name">オープンウォーターダイバーコース</dt>
-              <dd class="price__cost">¥50,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">アドバンスドオープンウォーターコース</dt>
-              <dd class="price__cost">¥60,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">レスキュー＋EFRコース</dt>
-              <dd class="price__cost">¥70,000</dd>
-            </div>
-          </dl>
+            <?php
+              $license_fields = SCF::get_option_meta('price_options', 'license_lists');
+              foreach ($license_fields as $license_field_name => $license_value) {
+                  $license_content = esc_html($license_value['license_content']);
+                  $license_subContent = esc_html($license_value['license_subContent']);
+                  $license_price = esc_html($license_value['license_price']);
 
+                  if ($license_content && $license_subContent && $license_price) {
+                      ?>
+                      <dl class="price__item">
+                          <div class="price__course">
+                              <dt class="price__name"><?php echo $license_content; ?> <?php echo $license_subContent; ?></dt>
+                              <dd class="price__cost">&yen;<?php echo number_format($license_price); ?></dd>
+                          </div>
+                      </dl>
+                      <?php
+                  }
+              }
+            ?>
+
+          <!-- experience_lists -->
           <h3 class="price__title">体験ダイビング</h3>
           <hr class="price__line">
-          <dl class="price__item">
-            <div class="price__course">
-              <dt class="price__name">ビーチ体験ダイビング(半日)</dt>
-              <dd class="price__cost">¥7,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">ビーチ体験ダイビング(1日)</dt>
-              <dd class="price__cost">¥14,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">ボート体験ダイビング(半日)</dt>
-              <dd class="price__cost">¥10,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">ボート体験ダイビング(1日)</dt>
-              <dd class="price__cost">¥18,000</dd>
-            </div>
-          </dl>
+            <?php
+                $experience_fields = SCF::get_option_meta('price_options', 'experience_lists');
+                foreach ($experience_fields as $experience_field_name => $experience_value) {
+                    $experience_content = esc_html($experience_value['experience_content']);
+                    $experience_subContent = esc_html($experience_value['experience_subContent']);
+                    $experience_price = esc_html($experience_value['experience_price']);
 
+                    if ($experience_content && $experience_subContent && $experience_price) {
+                        ?>
+                        <dl class="price__item">
+                            <div class="price__course">
+                                <dt class="price__name"><?php echo $experience_content; ?> <?php echo $experience_subContent; ?></dt>
+                                <dd class="price__cost">&yen;<?php echo number_format($experience_price); ?></dd>
+                            </div>
+                        </dl>
+                        <?php
+                    }
+                }
+              ?>
+         
+         <!-- fun_lists -->
           <h3 class="price__title">ファンダイビング</h3>
           <hr class="price__line">
-          <dl class="price__item">
-            <div class="price__course">
-              <dt class="price__name">ビーチダイビング(2ダイブ)</dt>
-              <dd class="price__cost">¥14,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">ボートダイビング(2ダイブ)</dt>
-              <dd class="price__cost">¥18,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">スペシャルダイビング(2ダイブ)</dt>
-              <dd class="price__cost">¥24,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">ナイトダイビング(1ダイブ)</dt>
-              <dd class="price__cost">¥10,000</dd>
-            </div>
-          </dl>
+            <?php
+                $fun_fields = SCF::get_option_meta('price_options', 'fun_lists');
+                foreach ($fun_fields as $fun_field_name => $fun_value) {
+                    $fun_content = esc_html($fun_value['fun_content']);
+                    $fun_subContent = esc_html($fun_value['fun_subContent']);
+                    $fun_price = esc_html($fun_value['fun_price']);
 
+                    if ($fun_content && $fun_subContent && $fun_price) {
+                        ?>
+                        <dl class="price__item">
+                            <div class="price__course">
+                                <dt class="price__name"><?php echo $fun_content; ?> <?php echo $fun_subContent; ?></dt>
+                                <dd class="price__cost">&yen;<?php echo number_format($fun_price); ?></dd>
+                            </div>
+                        </dl>
+                        <?php
+                    }
+                }
+              ?>
+
+          <!-- special_lists -->
           <h3 class="price__title">スペシャルダイビング</h3>
           <hr class="price__line">
-          <dl class="price__item">
-            <div class="price__course">
-              <dt class="price__name">貸切ダイビング(2ダイブ)</dt>
-              <dd class="price__cost">¥24,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">1日ダイビング(3ダイブ)</dt>
-              <dd class="price__cost">¥32,000</dd>
-            </div>
-            <div class="price__course">
-              <dt class="price__name">ナイトダイビング(2ダイブ)</dt>
-              <dd class="price__cost">¥14,000</dd>
-            </div>
-          </dl>
+            <?php
+                $special_fields = SCF::get_option_meta('price_options', 'special_lists');
+                foreach ($special_fields as $special_field_name => $special_value) {
+                    $special_content = esc_html($special_value['special_content']);
+                    $special_subContent = esc_html($special_value['special_subContent']);
+                    $special_price = esc_html($special_value['special_price']);
+
+                    if ($special_content && $special_subContent && $special_price) {
+                        ?>
+                        <dl class="price__item">
+                            <div class="price__course">
+                                <dt class="price__name"><?php echo $special_content; ?> <?php echo $special_subContent; ?></dt>
+                                <dd class="price__cost">&yen;<?php echo number_format($special_price); ?></dd>
+                            </div>
+                        </dl>
+                        <?php
+                    }
+                }
+              ?>
+
         </div> <!-- price__items -->
+
         <div class="price__imageCenter colorbox">
           <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/price2.jpg" class="price__imageCenter-img" alt="水中のサンゴと複数の小魚の様子">
         </div>
