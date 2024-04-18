@@ -412,6 +412,10 @@ $contact = esc_url( home_url( '/contact/' ) );
               <dt class="price__name">1日ダイビング(3ダイブ)</dt>
               <dd class="price__cost">¥32,000</dd>
             </div>
+            <div class="price__course">
+              <dt class="price__name">ナイトダイビング(2ダイブ)</dt>
+              <dd class="price__cost">¥14,000</dd>
+            </div>
           </dl>
         </div> <!-- price__items -->
         <div class="price__imageCenter colorbox">
