@@ -17,6 +17,9 @@ $c_trial_diving = esc_url( home_url( '/campaign_category/trial-diving/' ) );
 $p_licence = esc_url( home_url( '/price#licence' ) );
 $p_fundiving = esc_url( home_url( '/price#fundiving' ) );
 $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
+// $i_licence = esc_url( home_url( '/information/?tab=license' ) );
+// $i_fundiving = esc_url( home_url( '/information/?tab=fan-diving' ) );
+// $i_experience_diving = esc_url( home_url( '/information/?tab=experience-diving' ) );
 ?> 
 
 

@@ -5649,13 +5649,13 @@ hr.page-campaign-card__line {
 	z-index: 2;
 }
 
-.tab__button.tab__button--license::before {
+.tab__button.tab__button--licence::before {
 	-webkit-mask-image: url(../images/common/icon-information1-green.svg);
 	mask-image: url(../images/common/icon-information1-green.svg);
 }
 
-.tab__button.tab__button--license:hover::before,
-.tab__button.tab__button--license.is-active::before {
+.tab__button.tab__button--licence:hover::before,
+.tab__button.tab__button--licence.is-active::before {
 	background-color: #fff;
 }
 
