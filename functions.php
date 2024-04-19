@@ -40,7 +40,10 @@ function my_script_init()
 // css
 	wp_enqueue_style( 'style-css', get_template_directory_uri() . '/dist/assets/css/style.css', array(), '1.0.1', 'all' );
 	wp_enqueue_style( 'swiper-css', '//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', array(), '8.0.0', 'all' );
-	wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap', array(), '8.0.0', 'all' );
+	// 前回適用できたGoogleフォント
+	// wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap', array(), '8.0.0', 'all' );
+	// 今回適用したいGoogleフォント
+	// wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css2?family=Gotu&family=Lato&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap', array(), '8.0.0', 'all' );
 
   // js
 	wp_enqueue_script( 'jquery','//code.jquery.com/jquery-3.6.0.js', array( 'jquery' ), '1.0.1', true );

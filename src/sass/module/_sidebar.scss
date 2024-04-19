@@ -133,11 +133,11 @@
     margin-left: rem(28);
     margin-top: rem(-23);
   }
-  
+
   .sidebar__archive-title:before {
     transform: rotate(0deg);
   }
-  
+
   .sidebar__archive-title.open:before {
     transform: rotate(-30deg);
   }
