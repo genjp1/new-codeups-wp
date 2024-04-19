@@ -3475,27 +3475,36 @@ details[open] > summary::before {
 }
 
 .sidebar__archive li {
+	cursor: pointer;
+	font-size: 24px;
 	margin-top: 0.25rem;
+	transition: 0.5s;
 }
 
 .sidebar__archive li:before {
 	content: "▶︎";
 	display: inline-block;
+	font-size: 20px;
 	height: 1rem;
-	margin-right: 0.5rem;
+	margin-right: 8px;
 	transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
+.sidebar__archive li:first-child {
+	margin-top: 23px;
+}
+
 .sidebar__archive-item {
-	margin-left: 1rem;
+	margin-left: 28px;
+	margin-top: -23px;
 }
 
 .sidebar__archive-title:before {
-	transform: rotate(-30deg);
+	transform: rotate(0deg);
 }
 
 .sidebar__archive-title.open:before {
-	transform: rotate(0deg);
+	transform: rotate(-30deg);
 }
 
 .sp-nav {

@@ -201,7 +201,7 @@ $contact = esc_url( home_url( '/contact/' ) );
     <div class="sidebar__archive">
     <h2 class="sidebar__title">アーカイブ</h2>
 
-    <div class="sidebar__container toggl">
+    <!-- <div class="sidebar__container toggl">
         <div class="toggl__container">
 
             <details open="open">
@@ -283,7 +283,7 @@ $contact = esc_url( home_url( '/contact/' ) );
 
         </div>
 
-    </div>
+    </div> -->
     <ul>
     <?php blog_get_archives(); ?>
     </ul>

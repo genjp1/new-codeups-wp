@@ -110,24 +110,34 @@
   
   .sidebar__archive li {
     margin-top: 0.25rem;
+
+    font-size: 24px;
+    transition: .5s ;
+    cursor: pointer;
   }
   
   .sidebar__archive li:before {
     content: "▶︎";
     display: inline-block;
     height: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 8px;
     transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+    font-size: 20px;
   }
+
+  .sidebar__archive li:first-child {
+    margin-top: 23px;
+}
   
   .sidebar__archive-item {
-    margin-left: 1rem;
+    margin-left: 28px;
+    margin-top: -23px;
   }
   
   .sidebar__archive-title:before {
-    transform: rotate(-30deg);
+    transform: rotate(0deg);
   }
   
   .sidebar__archive-title.open:before {
-    transform: rotate(0deg);
+    transform: rotate(-30deg);
   }
