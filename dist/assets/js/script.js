@@ -381,7 +381,10 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault(); // デフォルトのリンク動作をキャンセル
         // 対応するtabパラメータを使用してpage-information.htmlに遷移
         // window.location.href = 'page-information.html?tab=' + tabMap[text];
-        window.location.href = 'information?tab=' + tabMap[text];
+        // window.location.href = 'information?tab=' + tabMap[text];
+
+        // 対応するtabパラメータを使用して絶対パスでinformationページに遷移
+        window.location.href = window.location.origin + '/information/?tab=' + tabMap[text];
       }
     });
   });
