@@ -111,7 +111,7 @@
   .sidebar__archive li {
     margin-top: 0.25rem;
 
-    font-size: 24px;
+    font-size: rem(24);
     transition: .5s ;
     cursor: pointer;
   }
@@ -120,18 +120,18 @@
     content: "▶︎";
     display: inline-block;
     height: 1rem;
-    margin-right: 8px;
+    margin-right: rem(8);
     transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
-    font-size: 20px;
+    font-size: rem(20);
   }
 
   .sidebar__archive li:first-child {
-    margin-top: 23px;
+    margin-top: rem(23);
 }
   
   .sidebar__archive-item {
-    margin-left: 28px;
-    margin-top: -23px;
+    margin-left: rem(28);
+    margin-top: rem(-23);
   }
   
   .sidebar__archive-title:before {

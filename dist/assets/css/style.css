@@ -3476,7 +3476,7 @@ details[open] > summary::before {
 
 .sidebar__archive li {
 	cursor: pointer;
-	font-size: 24px;
+	font-size: 1.5rem;
 	margin-top: 0.25rem;
 	transition: 0.5s;
 }
@@ -3484,19 +3484,19 @@ details[open] > summary::before {
 .sidebar__archive li:before {
 	content: "▶︎";
 	display: inline-block;
-	font-size: 20px;
+	font-size: 1.25rem;
 	height: 1rem;
-	margin-right: 8px;
+	margin-right: 0.5rem;
 	transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
 .sidebar__archive li:first-child {
-	margin-top: 23px;
+	margin-top: 1.4375rem;
 }
 
 .sidebar__archive-item {
-	margin-left: 28px;
-	margin-top: -23px;
+	margin-left: 1.75rem;
+	margin-top: -1.4375rem;
 }
 
 .sidebar__archive-title:before {
