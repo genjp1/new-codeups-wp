@@ -39,6 +39,32 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
+  <!-- ローディングアニメーション -->
+  <div class="loading js-loading">
+    <div class="loading__inner">
+      <div class="loading__img-wrap">
+        <div class="loading__img js-loading-img">
+          <picture>
+            <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/loading-left.jpg" class="mv">
+            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/loading-left-sp.jpg" class="mv" alt="水中のウミガメの様子">
+          </picture>
+        </div>
+        <div class="loading__img js-loading-img">
+          <picture>
+            <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/loading-right.jpg" class="mv">
+            <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/loading-right-sp.jpg" class="mv" alt="水中のウミガメの様子">
+          </picture>
+        </div>
+      </div>
+      <div class="loading__title-wrap js-loading-title">
+        <p class="loading__title">diving</p>
+        <p class="loading__subtitle">into&nbsp;the&nbsp;ocean</p>
+      </div>
+    </div>
+  </div>
+
+
+
   <header class="header">
     <div class="header__inner">
       <h1 class="header__logo">
