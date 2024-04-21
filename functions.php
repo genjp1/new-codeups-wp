@@ -237,12 +237,12 @@ add_filter( 'excerpt_more', 'my_excerpt_more' );
  * @param string $menu_title 管理画面のメニューに表示するタイトル
  * @param string $capability メニューを操作できる権限（manage_options とか）
  * @param string $menu_slug オプションページのスラッグ。ユニークな値にすること。
- * @param string|null $icon_url メニューに表示するアイコンの URL
+ * @param string|null $icon_url メニューに表示するアイコンの URL（https://developer.wordpress.org/resource/dashicons/#admin-settings）
  * @param int $position メニューの位置
  */
-SCF::add_options_page( 'よくある質問', '質問情報', 'manage_options', 'theme-options', null,7 );
-SCF::add_options_page( '料金表', '料金一覧', 'manage_options', 'price_options', null,8 );
-SCF::add_options_page( 'ギャラリー','ギャラリー画像', 'manage_options', 'gallery_options', null,9);
+SCF::add_options_page( '私達について','ギャラリー', 'manage_options', 'gallery_options', 'dashicons-images-alt', 10);
+SCF::add_options_page( '料金一覧', '料金表', 'manage_options', 'price_options', 'dashicons-money-alt', 11 );
+SCF::add_options_page( 'よくある質問', 'FAQ', 'manage_options', 'theme-options', 'dashicons-format-chat', 12 );
 //---------------------------------------
 // 【投稿記事の画像挿入時にwidthとheightを削除】
 //---------------------------------------
