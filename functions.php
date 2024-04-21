@@ -254,6 +254,7 @@ add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 
 
+
 // /* ==========================================================================
 // ブログ - 人気記事 - カスタムフィールドの「post_views_count」にアクセス数を保存する
 // ========================================================================== */
