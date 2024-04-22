@@ -13,6 +13,7 @@ $faq = esc_url( home_url( '/faq/' ) );
 $privacypolicy = esc_url( home_url( '/privacypolicy/' ) );
 $terms = esc_url( home_url( '/terms/' ) );
 $contact = esc_url( home_url( '/contact/' ) );
+$sitemap = esc_url( home_url( '/sitemap/' ) );
 $c_licence = esc_url( home_url( '/campaign_category/licence/' ) );
 $c_fundiving = esc_url( home_url( '/campaign_category/fundiving/' ) );
 $c_trial_diving = esc_url( home_url( '/campaign_category/trial-diving/' ) );
@@ -99,6 +100,8 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
               <li class="footer-nav__item footer-nav__item--black"><span><a href="<?php echo $terms; ?>">利用規約</a></span>
               </li>
               <li class="footer-nav__item footer-nav__item--black"><span><a href="<?php echo $contact; ?>">お問い合わせ</a></span>
+              </li>
+              <li class="footer-nav__item footer-nav__item--black"><span><a href="<?php echo $sitemap; ?>">サイトマップ</a></span>
               </li>
             </ul>
           </div>

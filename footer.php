@@ -11,6 +11,7 @@ $faq = esc_url( home_url( '/faq/' ) );
 $privacypolicy = esc_url( home_url( '/privacypolicy/' ) );
 $terms = esc_url( home_url( '/terms/' ) );
 $contact = esc_url( home_url( '/contact/' ) );
+$sitemap = esc_url( home_url( '/sitemap/' ) );
 $c_licence = esc_url( home_url( '/campaign_category/licence/' ) );
 $c_fundiving = esc_url( home_url( '/campaign_category/fundiving/' ) );
 $c_trial_diving = esc_url( home_url( '/campaign_category/trial-diving/' ) );
@@ -26,7 +27,7 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
  <?php if (!is_404()): ?>
  <div class="pagetop-block">
     <!--   トップに戻るボタン -->
-    <a class="pagetop" href="#">
+    <a class="pagetop" href="/">
       <div class="pagetop__arrow"></div>
     </a>
   </div>
@@ -108,9 +109,9 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
             <ul class="footer-nav__items-column">
               <li class="footer-nav__item"><span><a href="<?php echo $information; ?>">ダイビング情報</a></span>
                 <ul>
-                  <li class="footer-nav__item-child"><a class="tab-link">ライセンス取得</a></li>
-                  <li class="footer-nav__item-child"><a class="tab-link">体験ダイビング</a></li>
-                  <li class="footer-nav__item-child"><a class="tab-link">ファンダイビング</a></li>
+                  <li class="footer-nav__item-child"><a class="tab-link" href="<?php echo $information; ?>">ライセンス取得</a></li>
+                  <li class="footer-nav__item-child"><a class="tab-link" href="<?php echo $information; ?>">体験ダイビング</a></li>
+                  <li class="footer-nav__item-child"><a class="tab-link" href="<?php echo $information; ?>">ファンダイビング</a></li>
                 </ul>
               </li>
               <li class="footer-nav__item"><span><a href="<?php echo $blog; ?>">ブログ</a></span>
@@ -138,6 +139,8 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
               <li class="footer-nav__item"><span><a href="<?php echo $terms; ?>">利用規約</a></span>
               </li>
               <li class="footer-nav__item"><span><a href="<?php echo $contact; ?>">お問い合わせ</a></span>
+              </li>
+              <li class="footer-nav__item"><span><a href="<?php echo $sitemap; ?>">サイトマップ</a></span>
               </li>
             </ul>
           </div>
