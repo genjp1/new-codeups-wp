@@ -82,7 +82,7 @@ $contact = esc_url( home_url( '/contact/' ) );
         <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
             <li class="review-cards__card review-card">
-              <a href="<?php the_permalink(); ?>" class="review-card__content">
+              <div class="review-card__content">
                 <div class="review-card__img colorbox">
                     <?php if (has_post_thumbnail()): ?>
                         <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
@@ -104,7 +104,7 @@ $contact = esc_url( home_url( '/contact/' ) );
                     </p>
                 <p class="review-card__title"><?php the_title(); ?></p>
                 </div>
-              </a>
+              </div>
             </li>
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
