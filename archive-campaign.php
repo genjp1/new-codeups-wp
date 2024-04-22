@@ -30,22 +30,10 @@ $contact = esc_url( home_url( '/contact/' ) );
 <!-- パンくず あとでプラグイン化する。-->
 <?php echo get_template_part('/template/breadcrumb')?>
 
-  <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
-  <?php
-    $args = array( 
-      //カスタム投稿のスラッグ名を記述
-      'post_type' => 'campaign',
-      //表示する記事の件数を指定
-      'posts_per_page' => 4,
-    );
-    $the_query = new WP_Query($args); if($the_query->have_posts()):
-  ?>
-
   <!-- page-campaign -->
   <div class="page-campaign top-page-campaign">
     <div class="page-campaign__inner inner">
 
-    
       <!-- カテゴリータブ -->
       <!-- <div class="page-campaign__tab tab-category">
         <div class="tab-category__lists">
@@ -109,13 +97,23 @@ $contact = esc_url( home_url( '/contact/' ) );
         </div>
       </div>
 
-      <!-- キャンペーンカード -->
+        <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
+        <?php
+          $args = array( 
+            //カスタム投稿のスラッグ名を記述
+            'post_type' => 'campaign',
+            //表示する記事の件数を指定
+            'posts_per_page' => 4,
+          );
+          $the_query = new WP_Query($args); if($the_query->have_posts()):
+        ?>
+
+      <!-- ALL -->
       <ul class="page-campaign__cards page-campaign-cards">
 
         <!-- ループ処理開始の場所に持っていく -->
         <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
 
-        <!-- ALL -->
         <li class="page-campaign-cards__card">
           <div class="page-campaign-card">
             <div class="page-campaign-card__item">
