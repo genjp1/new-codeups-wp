@@ -138,52 +138,52 @@ $contact = esc_url( home_url( '/contact/' ) );
     <ul class="sidebar__cards sidebar-campaignCards">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <li class="sidebar-campaignCards__card">
-        <a href="<?php the_permalink(); ?>" class="sidebar-campaignCard">
-            <div class="sidebar-campaignCard__item">
-            <div class="sidebar-campaignCard__img">
+            <div class="sidebar-campaignCard">
+                <div class="sidebar-campaignCard__item">
+                <div class="sidebar-campaignCard__img">
 
-                <?php if (has_post_thumbnail()): ?>
-                    <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
-                    <?php the_post_thumbnail(); ?>
-                <?php else: ?>
-                    <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="review-card__img-img">
-                <?php endif; ?>
-
-            </div>
-            <div class="sidebar-campaignCard__body">
-                <div class="sidebar-campaignCard__head">
-
-                <!-- タイトル取得 -->
-                <p class="sidebar-campaignCard__title"><?php the_title(); ?></p>
-                </div>
-
-                <!-- ACF変数化 -->
-                <?php 
-                $campaignPrice = get_field('campaign_price');
-                $campaignDetail= get_field('campaign_detail');
-                $campaignPeriod = $campaignDetail['campaign-period'];
-                ?>
-
-                <div class="sidebar-campaignCard__text-blok">
-                <hr class="sidebar-campaignCard__line">
-
-                <?php if( !empty($campaignPrice['text']) ): ?>
-                <p class="sidebar-campaignCard__text"><?php echo esc_html($campaignPrice['text']); ?></p>
-                <?php endif; ?>
-
-                <div class="sidebar-campaignCard__price">
-                    <?php if( !empty($campaignPrice['list-price']) ): ?>
-                    <p class="sidebar-campaignCard__price-before">&yen;<?php echo number_format($campaignPrice['list-price']); ?></p>
+                    <?php if (has_post_thumbnail()): ?>
+                        <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
+                        <?php the_post_thumbnail(); ?>
+                    <?php else: ?>
+                        <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="review-card__img-img">
                     <?php endif; ?>
 
-                    <?php if( !empty($campaignPrice['discount-price']) ): ?>
-                    <p class="sidebar-campaignCard__price-discount">&yen;<?php echo number_format($campaignPrice['discount-price']); ?></p>
+                </div>
+                <div class="sidebar-campaignCard__body">
+                    <div class="sidebar-campaignCard__head">
+
+                    <!-- タイトル取得 -->
+                    <p class="sidebar-campaignCard__title"><?php the_title(); ?></p>
+                    </div>
+
+                    <!-- ACF変数化 -->
+                    <?php 
+                    $campaignPrice = get_field('campaign_price');
+                    $campaignDetail= get_field('campaign_detail');
+                    $campaignPeriod = $campaignDetail['campaign-period'];
+                    ?>
+
+                    <div class="sidebar-campaignCard__text-blok">
+                    <hr class="sidebar-campaignCard__line">
+
+                    <?php if( !empty($campaignPrice['text']) ): ?>
+                    <p class="sidebar-campaignCard__text"><?php echo esc_html($campaignPrice['text']); ?></p>
                     <?php endif; ?>
+
+                    <div class="sidebar-campaignCard__price">
+                        <?php if( !empty($campaignPrice['list-price']) ): ?>
+                        <p class="sidebar-campaignCard__price-before">&yen;<?php echo number_format($campaignPrice['list-price']); ?></p>
+                        <?php endif; ?>
+
+                        <?php if( !empty($campaignPrice['discount-price']) ): ?>
+                        <p class="sidebar-campaignCard__price-discount">&yen;<?php echo number_format($campaignPrice['discount-price']); ?></p>
+                        <?php endif; ?>
+                    </div>
+                    </div>
                 </div>
                 </div>
             </div>
-            </div>
-        </a>
         </li>
         
         <!-- ループ終了の場所に持っていく -->
