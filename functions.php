@@ -196,19 +196,22 @@ function my_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'my_excerpt_more' );
 
 
-// /*====================================================
-// # 表示件数変更（カスタム投稿一覧）
-// =====================================================*/
-// add_action( 'pre_get_posts', 'my_custom_query_vars' );
-// function my_custom_query_vars( $query ) {
-// 	/* @var $query WP_Query */
-// 	if ( !is_admin() && $query->is_main_query()) {
-// 		if ( is_post_type_archive('campaign') ) {
-// 			$query->set( 'posts_per_page' , 3 );//表示したい数（全件表示は「-1」）
-// 		}
-// 	}
-// 	return $query;
-// }
+/*====================================================
+# 表示件数変更（カスタム投稿一覧）
+=====================================================*/
+add_action( 'pre_get_posts', 'my_custom_query_vars' );
+function my_custom_query_vars( $query ) {
+	/* @var $query WP_Query */
+	if ( !is_admin() && $query->is_main_query()) {
+		if ( is_post_type_archive('campaign') ) {
+			$query->set( 'posts_per_page' , 4 );//表示したい数（全件表示は「-1」）
+		}
+		if ( is_post_type_archive('voice') ) {
+			$query->set( 'posts_per_page' , 6 );//表示したい数（全件表示は「-1」）
+		}
+	}
+	return $query;
+}
 
 // /*====================================================
 // # カスタム投稿タイプのアーカイブページで表示する投稿数を変更（まさたさん）

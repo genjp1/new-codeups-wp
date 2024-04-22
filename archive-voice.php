@@ -87,22 +87,11 @@
         </div>
       </div>
 
-        <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
-        <?php
-            $args = array( 
-            //カスタム投稿のスラッグ名を記述
-            'post_type' => 'voice',
-            //表示する記事の件数を指定
-            'posts_per_page' => 6,
-            );
-            $the_query = new WP_Query($args); if($the_query->have_posts()):
-        ?>
-
       <!-- ALL -->
       <ul class="page-voice__cards voice-cards">
 
-        <!-- ループ処理開始の場所に持っていく -->
-        <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+        <?php if (have_posts()): ?>
+            <?php while (have_posts()) : the_post(); ?>
         
         <li class="voice-cards__card voice-card">
           <div class="voice-card__content">
@@ -140,8 +129,8 @@
           <p class="voice-card__text"><?php the_content();?></p>
         </li>
         
-         <!-- ループ終了の場所に持っていく -->
-         <?php endwhile; wp_reset_postdata(); ?>
+        <?php endwhile; ?>
+        
         </ul>
         <?php else : ?>
             <p>記事が投稿されていません</p>
