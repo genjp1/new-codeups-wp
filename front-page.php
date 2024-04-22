@@ -235,7 +235,7 @@ $contact = esc_url( home_url( '/contact/' ) );
       <!-- ループ処理開始の場所に持っていく -->
       <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
 
-        <a href="<?php echo $blogDetail; ?>" class="blog-cards__card card">
+        <a href="<?php the_permalink(); ?>" class="blog-cards__card card">
 
           <?php if (has_post_thumbnail()): ?>
               <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
