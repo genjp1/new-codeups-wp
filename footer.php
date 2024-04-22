@@ -108,9 +108,9 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
             <ul class="footer-nav__items-column">
               <li class="footer-nav__item"><span><a href="<?php echo $information; ?>">ダイビング情報</a></span>
                 <ul>
-                  <li class="footer-nav__item-child"><a class="tab-link" href="#">ライセンス取得</a></li>
-                  <li class="footer-nav__item-child"><a class="tab-link" href="#">体験ダイビング</a></li>
-                  <li class="footer-nav__item-child"><a class="tab-link" href="#">ファンダイビング</a></li>
+                  <li class="footer-nav__item-child"><a class="tab-link">ライセンス取得</a></li>
+                  <li class="footer-nav__item-child"><a class="tab-link">体験ダイビング</a></li>
+                  <li class="footer-nav__item-child"><a class="tab-link">ファンダイビング</a></li>
                 </ul>
               </li>
               <li class="footer-nav__item"><span><a href="<?php echo $blog; ?>">ブログ</a></span>
