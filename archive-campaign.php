@@ -97,22 +97,11 @@ $contact = esc_url( home_url( '/contact/' ) );
         </div>
       </div>
 
-        <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
-        <?php
-          $args = array( 
-            //カスタム投稿のスラッグ名を記述
-            'post_type' => 'campaign',
-            //表示する記事の件数を指定
-            'posts_per_page' => 4,
-          );
-          $the_query = new WP_Query($args); if($the_query->have_posts()):
-        ?>
-
       <!-- ALL -->
       <ul class="page-campaign__cards page-campaign-cards">
 
-        <!-- ループ処理開始の場所に持っていく -->
-        <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+        <?php if (have_posts()): ?>
+          <?php while (have_posts()) : the_post(); ?>
 
         <li class="page-campaign-cards__card">
           <div class="page-campaign-card">
@@ -186,8 +175,7 @@ $contact = esc_url( home_url( '/contact/' ) );
           </div>
         </li>
         
-        <!-- ループ終了の場所に持っていく -->
-        <?php endwhile; wp_reset_postdata(); ?>
+        <?php endwhile; ?>
         
         </ul>
         <?php else : ?>
