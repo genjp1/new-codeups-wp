@@ -18,6 +18,17 @@
   <!-- パンくず あとでプラグイン化する。-->
   <?php echo get_template_part('/template/breadcrumb')?>
 
+  <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
+  <?php
+    $args = array( 
+    //カスタム投稿のスラッグ名を記述
+    'post_type' => 'post',
+    //表示する記事の件数を指定
+    'posts_per_page' => 10,
+    );
+    $the_query = new WP_Query($args); if($the_query->have_posts()):
+  ?>
+
   <!-- page-blog -->
   <section class="page-blog top-page-blog">
     <div class="page-blog__inner inner">
@@ -26,8 +37,8 @@
 
         <div class="page-blog__cards blog-cards blog-cards--page-blog">
 
-            <?php if (have_posts()): ?>
-                <?php while (have_posts()) : the_post(); ?>
+            <!-- ループ処理開始の場所に持っていく -->
+            <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
 
             <a href="<?php the_permalink(); ?>" class="blog-cards__card card">
                 <?php if (has_post_thumbnail()): ?>
@@ -47,8 +58,12 @@
                 </div>
             </a>
             
-            <?php endwhile; endif; ?>
+            <!-- ループ終了の場所に持っていく -->
+            <?php endwhile; wp_reset_postdata(); ?>
         </div>
+            <?php else : ?>
+                <p>記事が投稿されていません</p>
+            <?php endif; ?>
 
         <div class="page-blog__pagenavi pagenavi">
           <!-- WP-PageNaviで出力される部分 ここから -->
