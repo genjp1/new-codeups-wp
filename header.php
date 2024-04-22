@@ -116,7 +116,7 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
               </li>
               <li class="sp-nav__item"><span><a href="<?php echo $faq; ?>">よくある質問</a></span>
               </li>
-              <li class="sp-nav__item"><span><a href="?php echo $privacypolicy; ?>">プライバシー<br>ポリシー</a></span>
+              <li class="sp-nav__item"><span><a href="<?php echo $privacypolicy; ?>">プライバシー<br>ポリシー</a></span>
               </li>
               <li class="sp-nav__item"><span><a href="<?php echo $terms; ?>">利用規約</a></span>
               </li>
