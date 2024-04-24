@@ -39,7 +39,7 @@
                 <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
                 <?php the_post_thumbnail('full'); ?>
             </div>
-        <?php endif; ?>
+          <?php endif; ?>
 
           <div class="blog-article__content">
              <?php the_content();?>
@@ -48,10 +48,32 @@
         </div>
 
         <div class="page-blogDetail__pagenavi pagenavi">
-          <!-- WP-PageNaviで出力される部分 ここから -->
-          <?php wp_pagenavi(); ?>
-          <!-- WP-PageNaviで出力される部分 ここまで -->
+        <!-- WP-PageNaviで出力される部分 ここから -->
+          <?php 
+          $prev = get_previous_post();
+          $next = get_next_post();
+
+          // 前の投稿が存在するか確認し、URLを取得
+          if ($prev && is_a($prev, 'WP_Post')) {
+              $prev_url = get_permalink($prev->ID);
+          }
+
+          // 次の投稿が存在するか確認し、URLを取得
+          if ($next && is_a($next, 'WP_Post')) {
+              $next_url = get_permalink($next->ID);
+          }
+          ?>
+          <div class='wp-pagenavi' role='navigation'>
+            <?php if(isset($next_url)):  ?>
+            <a class="previouspostslink" rel="prev" href="<?php echo $next_url; ?>"></a>
+            <?php endif; ?>
+            <?php if(isset($prev_url)):  ?>
+            <a class="nextpostslink nextpostslink--page-blogDetail" rel="next" href="<?php echo $prev_url; ?>"></a>
+            <?php endif; ?>
+          </div>
+        <!-- WP-PageNaviで出力される部分 ここまで -->
         </div>
+
 
       </div>
 

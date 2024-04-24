@@ -1,12 +1,6 @@
 <?php get_header(); ?>
 
 <?php
-$home = esc_url( home_url( '/' ) );
-$news = esc_url( home_url( '/news/' ) );
-$service = esc_url( home_url( '/service/' ) );
-$works = esc_url( home_url( '/works/' ) );
-$company = esc_url( home_url( '/company/' ) );
-$recruit = esc_url( home_url( '/recruit/' ) );
 $contact = esc_url( home_url( '/contact/' ) );
 ?>
 
