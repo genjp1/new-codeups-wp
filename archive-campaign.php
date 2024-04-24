@@ -133,31 +133,31 @@ $contact = esc_url( home_url( '/contact/' ) );
                 <div class="page-campaign-card__text-blok">
                   <hr class="page-campaign-card__line">
 
-                  <?php if( !empty($campaignPrice['text']) ): ?>
+                  <?php if($campaignPrice['text']): ?>
                   <p class="page-campaign-card__text"><?php echo esc_html($campaignPrice['text']); ?></p>
                   <?php endif; ?>
 
                   <div class="page-campaign-card__price">
-                    <?php if( !empty($campaignPrice['list-price']) ): ?>
+                    <?php if($campaignPrice['list-price']): ?>
                     <p class="page-campaign-card__price-before">&yen;<?php echo number_format($campaignPrice['list-price']); ?></p>
                     <?php endif; ?>
 
-                    <?php if( !empty($campaignPrice['discount-price']) ): ?>
+                    <?php if($campaignPrice['discount-price']): ?>
                     <p class="page-campaign-card__price-discount">&yen;<?php echo number_format($campaignPrice['discount-price']); ?></p>
                     <?php endif; ?>
                   </div>
 
                 </div>
 
-                <?php if( !empty($campaignDetail['campaign-main-text']) ): ?>
+                <?php if($campaignDetail['campaign-main-text']): ?>
                 <p class="page-campaign-card__description u-desktop"><?php echo esc_html($campaignDetail['campaign-main-text']); ?></p>
                 <?php endif; ?>
 
-                <?php if( !empty($campaignPeriod['campaign-period-start']) ): ?>
+                <?php if($campaignPeriod['campaign-period-start']): ?>
                 <p class="page-campaign-card__schedule u-desktop"><?php echo $campaignPeriod['campaign-period-start']; ?>&thinsp;-&thinsp;<?php echo $campaignPeriod['campaign-period-done']; ?></p>
                 <?php endif; ?>
 
-                <?php if( !empty($campaignDetail['campaign-sub-text']) ): ?>
+                <?php if($campaignDetail['campaign-sub-text']): ?>
                 <p class="page-campaign-card__reserve u-desktop"><?php echo esc_html($campaignDetail['campaign-sub-text']); ?></p>
                 <?php endif; ?>
 

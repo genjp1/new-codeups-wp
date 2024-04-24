@@ -120,16 +120,16 @@ $contact = esc_url( home_url( '/contact/' ) );
                       <div class="campaign-card__text-blok">
                         <hr class="campaign-card__line">
 
-                        <?php if( !empty($campaignPrice['text']) ): ?>
+                        <?php if($campaignPrice['text']): ?>
                           <p class="campaign-card__text"><?php echo esc_html($campaignPrice['text']); ?></p>
                         <?php endif; ?>
 
                         <div class="campaign-card__price">
-                          <?php if( !empty($campaignPrice['list-price']) ): ?>
+                          <?php if($campaignPrice['list-price']): ?>
                             <p class="campaign-card__price-before">&yen;<?php echo number_format($campaignPrice['list-price']); ?></p>
                           <?php endif; ?>
 
-                          <?php if( !empty($campaignPrice['discount-price']) ): ?>
+                          <?php if($campaignPrice['discount-price']): ?>
                             <p class="campaign-card__price-discount">&yen;<?php echo number_format($campaignPrice['discount-price']); ?></p>
                           <?php endif; ?>
 
