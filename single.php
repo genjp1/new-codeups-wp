@@ -37,7 +37,7 @@
           <?php if (has_post_thumbnail()): ?>
             <div class="blog-article__img">
                 <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
-                <?php the_post_thumbnail('full'); ?>
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>のアイキャッチ画像">
             </div>
           <?php endif; ?>
 

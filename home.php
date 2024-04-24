@@ -33,7 +33,7 @@
                 <?php if (has_post_thumbnail()): ?>
                     <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
                     <div class="card__img">
-                    <?php the_post_thumbnail(); ?>
+                    <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>のアイキャッチ画像">
                     </div>
                 <?php else: ?>
                     <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/noimage.jpg" alt="" class="card__img">
