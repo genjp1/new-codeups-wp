@@ -47,7 +47,7 @@ $contact = esc_url( home_url( '/contact/' ) );
               // カレントタームIDを取得（taxonomy-campaign_category.php用）
               $current_term_id = get_queried_object()->term_id;
               //ここまで（カレントタームIDを取得）
-              
+
               $terms = get_terms(array(
                   // 表示するタクソノミースラッグを記述
                   'taxonomy' => 'campaign_category',
