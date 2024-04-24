@@ -8,7 +8,7 @@ $contact = esc_url( home_url( '/contact/' ) );
   <section class="sub-mv">
     <div class="sub-mv__inner">
       <div class="sub-mv__title-wrap">
-        <h2 class="sub-mv__main-title">Campaign</h2>
+        <h1 class="sub-mv__main-title">Campaign</h1>
       </div>
       <div class="sub-mv__img">
         <picture>

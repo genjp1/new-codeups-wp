@@ -4,7 +4,7 @@
   <section class="sub-mv">
     <div class="sub-mv__inner">
       <div class="sub-mv__title-wrap">
-        <h2 class="sub-mv__main-title">Blog</h2>
+        <h1 class="sub-mv__main-title">Blog</h1>
       </div>
       <div class="sub-mv__img">
         <picture>

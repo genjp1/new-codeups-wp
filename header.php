@@ -67,11 +67,21 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
 
   <header class="header">
     <div class="header__inner">
+
+    <?php if(is_front_page()): ?>
       <h1 class="header__logo">
+    <?php else :?>
+      <div class="header__logo">
+    <?php endif; ?>
         <a href="<?php echo $home; ?>" class="logo">
           <img src="<?php echo get_template_directory_uri() ?>/dist/assets/images/common/logo.svg" alt="CodeUps">
         </a>
+    <?php if(is_front_page()): ?>
       </h1>
+    <?php else :?>
+      </div>
+    <?php endif; ?>
+
       <button class="header__drawer hamburger js-hamburger">
         <span></span>
         <span></span>

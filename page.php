@@ -7,9 +7,9 @@
 
        <!-- タイトル条件分岐 -->
        <?php if(is_page('privacypolicy')): ?>
-            <h2 class="sub-mv__main-title">Privacy Policy</h2>
+            <h1 class="sub-mv__main-title">Privacy Policy</h1>
         <?php elseif(is_page('terms-of-service')): ?>
-            <h2 class="sub-mv__main-title">Terms of Service</h2>
+            <h1 class="sub-mv__main-title">Terms of Service</h1>
         <?php endif; ?>
         
       </div>
