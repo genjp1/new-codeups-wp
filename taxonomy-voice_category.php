@@ -74,32 +74,12 @@
         </div>
       </div>
 
-          <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
-          <?php
-          // タクソノミーのスラッグを指定
-          $voice_category_slug = get_query_var('voice_category');
-          $args = array(
-              // カスタム投稿のスラッグを指定
-              "post_type" => "voice",
-              "posts_per_page" => 10,
-              'tax_query' => array(
-                  array(
-                      // タクソノミーのスラッグを指定
-                      'taxonomy' => 'voice_category',
-                      'field'    => 'slug',
-                      'terms'    => $voice_category_slug,
-                  ),
-              ),
-          );
-          $the_query = new WP_Query($args); if($the_query->have_posts()):
-        ?>
-
       <!-- ALL -->
       <ul class="page-voice__cards voice-cards">
 
-        <!-- ループ処理開始の場所に持っていく -->
-        <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
-        
+      <?php if (have_posts()): ?>
+	      <?php while (have_posts()) : the_post(); ?>
+
         <li class="voice-cards__card voice-card">
           <div class="voice-card__content">
             <div class="voice-card__info">
@@ -137,7 +117,7 @@
         </li>
         
          <!-- ループ終了の場所に持っていく -->
-         <?php endwhile; wp_reset_postdata(); ?>
+         <?php endwhile; ?>
         </ul>
         <?php else : ?>
             <p>記事が投稿されていません</p>

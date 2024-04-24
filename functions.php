@@ -201,16 +201,22 @@ add_filter( 'excerpt_more', 'my_excerpt_more' );
 =====================================================*/
 add_action( 'pre_get_posts', 'my_custom_query_vars' );
 function my_custom_query_vars( $query ) {
-	/* @var $query WP_Query */
-	if ( !is_admin() && $query->is_main_query()) {
-		if ( is_post_type_archive('campaign') ) {
-			$query->set( 'posts_per_page' , 4 );//表示したい数（全件表示は「-1」）
-		}
-		if ( is_post_type_archive('voice') ) {
-			$query->set( 'posts_per_page' , 6 );//表示したい数（全件表示は「-1」）
-		}
-	}
-	return $query;
+    /* @var $query WP_Query */
+    if ( !is_admin() && $query->is_main_query()) {
+        if ( is_post_type_archive('campaign') ) {
+            $query->set( 'posts_per_page' , 4 ); //表示したい数（全件表示は「-1」）
+        }
+        if ( is_tax('campaign_category') ) {
+            $query->set( 'posts_per_page' , 4 ); // タクソノミー「campaign_category」のページでの表示数（全件表示は「-1」）
+        }
+        if ( is_post_type_archive('voice') ) {
+            $query->set( 'posts_per_page' , 6 ); //表示したい数（全件表示は「-1」）
+        }
+        if ( is_tax('voice_category') ) {
+            $query->set( 'posts_per_page' , 6 ); // タクソノミー「voice_category」のページでの表示数（全件表示は「-1」）
+        }
+    }
+    return $query;
 }
 
 // /*====================================================

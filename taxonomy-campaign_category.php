@@ -89,31 +89,12 @@ $contact = esc_url( home_url( '/contact/' ) );
         </div>
       </div>
 
-        <!-- サブループ対象のセクション上部（セクションとセクションの間）に配置する -->
-        <?php
-          // タクソノミーのスラッグを指定
-          $campaign_category_slug = get_query_var('campaign_category');
-          $args = array(
-              // カスタム投稿のスラッグを指定
-              "post_type" => "campaign",
-              "posts_per_page" => 10,
-              'tax_query' => array(
-                  array(
-                      // タクソノミーのスラッグを指定
-                      'taxonomy' => 'campaign_category',
-                      'field'    => 'slug',
-                      'terms'    => $campaign_category_slug,
-                  ),
-              ),
-          );
-          $the_query = new WP_Query($args); if($the_query->have_posts()):
-        ?>
 
       <!-- キャンペーンカード -->
       <ul class="page-campaign__cards page-campaign-cards">
 
-        <!-- ループ処理開始の場所に持っていく -->
-        <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+      <?php if (have_posts()): ?>
+	      <?php while (have_posts()) : the_post(); ?>
 
         <!-- ALL -->
         <li class="page-campaign-cards__card">
@@ -189,7 +170,7 @@ $contact = esc_url( home_url( '/contact/' ) );
         </li>
         
         <!-- ループ終了の場所に持っていく -->
-        <?php endwhile; wp_reset_postdata(); ?>
+        <?php endwhile; ?>
         
         </ul>
         <?php else : ?>
