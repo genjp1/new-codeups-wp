@@ -55,6 +55,23 @@ function my_script_init()
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
 
+/*====================================================
+# google fontの読み込み
+=====================================================*/
+function custom_add_google_fonts() 
+{
+// Preconnect for Google Fonts
+    wp_register_style('google-fonts-preconnect', 'https://fonts.googleapis.com', [], null);
+    wp_enqueue_style('google-fonts-preconnect');
+
+    wp_register_style('gstatic-preconnect', 'https://fonts.gstatic.com', [], null, true);
+    wp_enqueue_style('gstatic-preconnect');
+
+    // Google Fonts CSS
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Gotu&family=Lato&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap', [], null);
+}
+add_action('wp_enqueue_scripts', 'custom_add_google_fonts');
+
 
 
 
