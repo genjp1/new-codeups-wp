@@ -103,7 +103,7 @@ $contact = esc_url( home_url( '/contact/' ) );
               <div class="page-campaign-card__img">
                 <?php if (has_post_thumbnail()): ?>
                     <!-- 投稿にアイキャッチ画像が有る場合の処理 -->
-                    <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>のアイキャッチ画像">
+                    <img src="<?php the_post_thumbnail_url(''); ?>" alt="<?php the_title(); ?>のアイキャッチ画像">
                 <?php else: ?>
                     <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/noimage.jpg" alt="">
                 <?php endif; ?>
