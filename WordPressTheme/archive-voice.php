@@ -44,7 +44,7 @@
                 $current_term_id = $queried_object->term_id;
             }
             //ここまで（カレントタームIDを取得）
-            
+
             $terms = get_terms(array(
                 // 表示するタクソノミースラッグを記述
                 'taxonomy' => 'voice_category',
