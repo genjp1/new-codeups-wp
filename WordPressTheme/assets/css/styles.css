@@ -5691,8 +5691,8 @@ hr.page-campaign-card__line {
 }
 
 .tab__button.tab__button--licence::before {
-	-webkit-mask-image: url(../images/common/icon-information1-green.svg);
-	mask-image: url(../images/common/icon-information1-green.svg);
+	-webkit-mask-image: url(../images/common/icon-information1.svg);
+	mask-image: url(../images/common/icon-information1.svg);
 }
 
 .tab__button.tab__button--licence:hover::before,
