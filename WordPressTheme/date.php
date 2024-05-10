@@ -4,7 +4,34 @@
   <section class="sub-mv">
     <div class="sub-mv__inner">
       <div class="sub-mv__title-wrap">
-        <h1 class="sub-mv__main-title">Blog</h1>
+        <?php
+          add_filter( 'get_the_archive_title', function ($title) {
+              if (is_category()) {
+                  $title = single_cat_title('', false);
+              } elseif (is_tag()) {
+                  $title = single_tag_title('', false);
+              } elseif (is_tax()) {
+                  $title = single_term_title('', false);
+              } elseif (is_post_type_archive()) {
+                  $title = post_type_archive_title('', false);
+              } elseif (is_date()) {
+                  if (get_query_var('monthnum')) {
+                      // 年月が指定されている場合
+                      $title = get_the_time('Y年n月' . 'の記事一覧');
+                  } else {
+                      // 年のみが指定されている場合
+                      $title = get_the_time('Y年' . 'の記事一覧');
+                  }
+              } elseif (is_search()) {
+                  $title = '検索結果：' . esc_html(get_search_query(false));
+              } elseif (is_404()) {
+                  $title = 'ページが見つかりません';
+              }
+              return $title;
+          });
+          the_archive_title( '<h1 class="sub-mv__main-title">', '</h1>' );
+        ?>
+        <!-- <h1 class="sub-mv__main-title">Blog</h1> -->
       </div>
       <div class="sub-mv__img">
         <picture>

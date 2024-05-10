@@ -3630,7 +3630,7 @@ details[open] > summary::before {
 .sub-mv__main-title {
 	color: #FFF;
 	font-family: "Lato", sans-serif;
-	font-size: 2.5rem;
+	font-size: 2.8125rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -5658,7 +5658,7 @@ hr.page-campaign-card__line {
 }
 
 .sub-mv__main-title {
-	font-size: 5rem;
+	font-size: 3.125rem;
 	line-height: 1.25; /* 125% */
 	width: 100%;
 }
