@@ -497,4 +497,20 @@ function blog_get_archives() {
     }
 }
 
+/*====================================================
+# 'privacypolicy' または 'terms-of-service' の固定ページ以外のエディターを非表示にする
+=====================================================*/
+
+add_filter('use_block_editor_for_post', function($use_block_editor, $post) {
+    // スラッグが 'privacypolicy' または 'terms-of-service' の固定ページのみエディターを使用可能にし、それ以外の固定ページではエディターを無効にする
+    if ($post->post_type === 'page' && $post->post_name !== 'privacypolicy' && $post->post_name !== 'terms-of-service') {
+        remove_post_type_support('page', 'editor');
+        return false;
+    }
+
+    // 'privacypolicy' と 'terms-of-service' の固定ページには通常通りエディターを使用
+    return $use_block_editor;
+}, 10, 2);
+
+
 
