@@ -134,9 +134,10 @@
 .template p {
   margin-top: 2rem;
 }
+
 .template ol {
    counter-reset: number;
-   margin-top: 1px;
+//    margin-top: 2rem;
 }
 
 .template li {
