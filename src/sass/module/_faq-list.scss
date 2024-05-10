@@ -68,7 +68,7 @@
 
 .faq-list__item-answer {
     padding: rem(25) rem(16) rem(25) rem(16);
-    display: none;
+    display: block;//回答を表示した状態（display: none;で隠した状態）
 
     border: 1px solid $green1;
     color: $main-black;

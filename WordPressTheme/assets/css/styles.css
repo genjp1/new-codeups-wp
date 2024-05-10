@@ -1062,7 +1062,7 @@ hr.contact__line {
 .faq-list__item-answer {
 	border: 1px solid #408F95;
 	color: #0D2936;
-	display: none;
+	display: block;
 	font-size: 1rem;
 	font-style: normal;
 	font-weight: 400;

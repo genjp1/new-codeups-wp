@@ -32,7 +32,7 @@
             ?>
             <ul class="faq__list faq-list">
               <li class="faq-list__item">
-                <p class="faq-list__item-question js-faq-question"><?php echo $fields_value['question']; ?></p>
+                <p class="faq-list__item-question js-faq-question is-open"><?php echo $fields_value['question']; ?></p>
                 <p class="faq-list__item-answer">
                 <?php echo $fields_value['answers']; ?>
                 </p>
