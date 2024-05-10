@@ -56,8 +56,6 @@ $p_trial_diving = esc_url( home_url( '/price#trial-diving' ) );
     </div>
   </div>
 
-
-
   <header class="header">
     <div class="header__inner">
 
