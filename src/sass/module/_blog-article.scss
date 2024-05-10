@@ -129,3 +129,25 @@
         background-image: url(../images/common/icon-blogDetail.svg);
         margin-top: rem(3);
       }
+
+
+
+      /*====================================================
+      # single.phpの<?php the_content();?>内のスタイル
+      =====================================================*/
+      .blog-article li {
+        line-height: 1.6;
+        padding: 0rem 1rem 0rem 1.8125rem;
+        position: relative;
+      }
+
+      .blog-article li:before {
+        background-image: url(../images/common/icon-blogDetail.svg);
+        color: skyblue;
+        content: "";
+        height: 1.125rem;
+        left: 0.0625rem;
+        margin-top: 0.1875rem;
+        position: absolute;
+        width: 1.125rem;
+      }
